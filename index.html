@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Discipline Club — Strategic Growth Plan</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+<style>
+  :root {
+    --saffron: #E6B400;
+    --charcoal: #1A1A1A;
+    --night: #0A0A0A;
+    --silver: #A9A9A9;
+    --white-smoke: #F4F4F4;
+    --saffron-dim: rgba(230, 180, 0, 0.10);
+    --saffron-border: rgba(230, 180, 0, 0.25);
+    --section-alt: #0F0F0F;
+    --profit: #E6B400;
+    --revenue: #F4F4F4;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--night);
+    color: var(--white-smoke);
+    line-height: 1.8;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .report-wrapper { max-width: 100%; overflow-x: hidden; }
+  .section-band { padding: 64px 0; }
+  .section-band:nth-child(even) { background: var(--section-alt); }
+  .section-inner { max-width: 780px; margin: 0 auto; padding: 0 32px; }
+
+  /* Cover */
+  .cover-band {
+    padding: 100px 0 80px;
+    background: var(--night);
+    border-bottom: 3px solid var(--saffron);
+  }
+  .cover-inner {
+    max-width: 780px; margin: 0 auto; padding: 0 32px; text-align: center;
+  }
+  .cover-label {
+    font-family: 'Bebas Neue', sans-serif; font-size: 15px;
+    letter-spacing: 0.25em; color: var(--saffron); margin-bottom: 24px;
+  }
+  .cover-inner h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(48px, 7vw, 72px);
+    color: var(--white-smoke); line-height: 1.0;
+    letter-spacing: 0.02em; margin-bottom: 20px;
+  }
+  .cover-inner h1 span { color: var(--saffron); }
+  .cover-inner .subtitle {
+    color: var(--silver); font-size: 17px; font-weight: 300;
+    max-width: 480px; margin: 0 auto; line-height: 1.6;
+  }
+  .cover-inner .date {
+    color: rgba(169,169,169,0.4); font-size: 13px;
+    margin-top: 28px; letter-spacing: 0.05em;
+  }
+
+  /* Section Headers */
+  .section-tag {
+    font-family: 'Bebas Neue', sans-serif; font-size: 14px;
+    letter-spacing: 0.2em; color: var(--saffron); margin-bottom: 10px; display: block;
+  }
+  .section-band h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(32px, 5vw, 44px);
+    color: var(--white-smoke); letter-spacing: 0.02em;
+    line-height: 1.05; margin-bottom: 28px;
+  }
+  .section-band h3 {
+    font-family: 'Bebas Neue', sans-serif; font-size: 24px;
+    color: var(--saffron); letter-spacing: 0.02em;
+    margin-top: 40px; margin-bottom: 14px;
+  }
+  .section-band p {
+    color: rgba(244,244,244,0.85); margin-bottom: 16px; font-weight: 300;
+  }
+  .section-band strong { color: var(--white-smoke); font-weight: 600; }
+
+  /* Revenue/Profit text colors */
+  .fig-revenue { color: var(--white-smoke); font-weight: 600; }
+  .fig-profit { color: var(--saffron); font-weight: 600; }
+
+  /* Callout */
+  .callout {
+    background: var(--saffron-dim); border-left: 4px solid var(--saffron);
+    padding: 24px 28px; margin: 28px 0; border-radius: 0 8px 8px 0;
+  }
+  .callout p { color: var(--white-smoke); margin-bottom: 0; font-weight: 400; font-size: 16px; }
+  .callout-label {
+    font-family: 'Bebas Neue', sans-serif; font-size: 14px;
+    letter-spacing: 0.15em; color: var(--saffron); margin-bottom: 10px; display: block;
+  }
+
+  /* Tables */
+  table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 15px; }
+  thead th {
+    font-family: 'Bebas Neue', sans-serif; font-size: 14px;
+    letter-spacing: 0.1em; color: var(--saffron); text-align: left;
+    padding: 12px 16px; border-bottom: 2px solid var(--saffron-border); font-weight: 400;
+  }
+  tbody td {
+    padding: 11px 16px; color: rgba(244,244,244,0.8);
+    border-bottom: 1px solid rgba(169,169,169,0.1); font-weight: 300;
+  }
+  tbody tr:last-child td { border-bottom: none; }
+  tbody td:first-child { color: var(--white-smoke); font-weight: 500; }
+  /* Aligned 3-column tables */
+  table.t3 { table-layout: fixed; }
+  table.t3 th:first-child, table.t3 td:first-child { width: 50%; }
+  table.t3 th:nth-child(2), table.t3 td:nth-child(2) { width: 25%; }
+  table.t3 th:nth-child(3), table.t3 td:nth-child(3) { width: 25%; }
+  .table-highlight td {
+    background: var(--saffron-dim); color: var(--white-smoke) !important; font-weight: 600 !important;
+  }
+
+  /* KPI Cards */
+  .kpi-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin: 28px 0; justify-content: center; }
+  .kpi-grid-3 { grid-template-columns: repeat(3, 1fr); max-width: 600px; margin-left: auto; margin-right: auto; }
+  .kpi-card {
+    background: var(--charcoal); border: 1px solid rgba(169,169,169,0.1);
+    border-radius: 10px; padding: 28px 16px; text-align: center;
+  }
+  .kpi-value {
+    font-family: 'Bebas Neue', sans-serif; font-size: 40px;
+    color: var(--saffron); line-height: 1; margin-bottom: 8px;
+  }
+  .kpi-label { font-size: 12px; color: var(--silver); letter-spacing: 0.04em; font-weight: 400; line-height: 1.4; }
+
+  /* Action Items */
+  .action-item { padding: 20px 0; border-bottom: 1px solid rgba(169,169,169,0.1); }
+  .action-item:last-child { border-bottom: none; }
+  .action-item h4 {
+    font-family: 'Bebas Neue', sans-serif; font-size: 20px;
+    color: var(--white-smoke); letter-spacing: 0.02em; margin-bottom: 6px;
+  }
+  .action-item h4 .action-num { color: var(--saffron); margin-right: 8px; }
+  .action-item p { font-size: 15px; color: rgba(244,244,244,0.75); margin-bottom: 0; font-weight: 300; }
+
+  /* Script Box */
+  .script-box {
+    background: var(--charcoal); border: 1px solid rgba(169,169,169,0.12);
+    border-radius: 10px; padding: 28px 28px 28px 36px; margin: 20px 0; position: relative;
+  }
+  .script-box::before {
+    content: '\201C'; font-family: 'Bebas Neue', sans-serif; font-size: 72px;
+    color: var(--saffron); opacity: 0.25; position: absolute; top: -8px; left: 12px; line-height: 1;
+  }
+  .script-box p {
+    font-size: 15px; line-height: 1.8; color: rgba(244,244,244,0.85);
+    font-style: italic; font-weight: 300; margin-bottom: 0;
+  }
+
+  /* Phase Cards */
+  .phases { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 24px 0; }
+  .phase-card {
+    background: var(--charcoal); border: 1px solid rgba(169,169,169,0.1);
+    border-radius: 10px; padding: 24px;
+  }
+  .phase-card .phase-tag {
+    font-family: 'Bebas Neue', sans-serif; font-size: 13px;
+    letter-spacing: 0.12em; color: var(--saffron); margin-bottom: 4px;
+  }
+  .phase-card h4 { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: var(--white-smoke); margin-bottom: 4px; }
+  .phase-card .phase-target { font-size: 13px; color: var(--saffron); font-weight: 500; margin-bottom: 10px; }
+  .phase-card p { font-size: 14px; color: rgba(244,244,244,0.65); margin-bottom: 0; line-height: 1.6; font-weight: 300; }
+  .phase-card.phase-highlight {
+    border-color: var(--saffron-border);
+    background: linear-gradient(135deg, var(--charcoal) 0%, rgba(230,180,0,0.06) 100%);
+  }
+
+  /* Pricing Box */
+  .pricing-box {
+    background: linear-gradient(135deg, var(--charcoal) 0%, rgba(230,180,0,0.08) 100%);
+    border: 1px solid var(--saffron-border); border-radius: 12px; padding: 32px; margin: 28px 0;
+  }
+  .pricing-box h4 {
+    font-family: 'Bebas Neue', sans-serif; font-size: 26px;
+    color: var(--saffron); margin-bottom: 18px;
+  }
+  .pricing-box ul { list-style: none; margin: 0; columns: 2; column-gap: 24px; }
+  .pricing-box ul li {
+    padding: 5px 0 5px 18px; position: relative;
+    color: rgba(244,244,244,0.8); font-weight: 300; font-size: 15px; break-inside: avoid;
+  }
+  .pricing-box ul li::before {
+    content: '\2014'; position: absolute; left: 0; color: var(--saffron); font-size: 14px;
+  }
+
+  /* Comparison Cards */
+  .compare-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 28px 0; }
+  .compare-card {
+    border-radius: 10px; padding: 28px; position: relative;
+  }
+  .compare-card.compare-bad {
+    background: var(--charcoal); border: 1px solid rgba(169,169,169,0.15);
+  }
+  .compare-card.compare-good {
+    background: linear-gradient(135deg, var(--charcoal) 0%, rgba(230,180,0,0.08) 100%);
+    border: 1px solid var(--saffron-border);
+  }
+  .compare-card .compare-label {
+    font-family: 'Bebas Neue', sans-serif; font-size: 13px;
+    letter-spacing: 0.12em; margin-bottom: 8px;
+  }
+  .compare-bad .compare-label { color: var(--silver); }
+  .compare-good .compare-label { color: var(--saffron); }
+  .compare-card h4 {
+    font-family: 'Bebas Neue', sans-serif; font-size: 20px;
+    color: var(--white-smoke); margin-bottom: 10px;
+  }
+  .compare-card p { font-size: 14px; color: rgba(244,244,244,0.7); margin-bottom: 0; line-height: 1.6; font-weight: 300; }
+  .compare-card .compare-result {
+    margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(169,169,169,0.1);
+    font-size: 14px; font-weight: 500;
+  }
+  .compare-bad .compare-result { color: var(--silver); }
+  .compare-good .compare-result { color: var(--saffron); }
+
+  /* Report Card */
+  .report-card { margin: 32px 0; }
+  .rc-row {
+    display: grid; grid-template-columns: 1fr auto; align-items: center;
+    padding: 14px 0; border-bottom: 1px solid rgba(169,169,169,0.08);
+  }
+  .rc-row:last-child { border-bottom: none; }
+  .rc-label {
+    font-size: 15px; color: rgba(244,244,244,0.8); font-weight: 400;
+  }
+  .rc-grade {
+    font-family: 'Bebas Neue', sans-serif; font-size: 28px; line-height: 1;
+    min-width: 60px; text-align: center; padding: 6px 12px;
+    border-radius: 6px;
+  }
+  .rc-grade-a { color: #2ecc71; background: rgba(46,204,113,0.08); }
+  .rc-grade-b { color: #E6B400; background: rgba(230,180,0,0.08); }
+  .rc-grade-c { color: #e67e22; background: rgba(230,126,34,0.08); }
+  .rc-grade-d { color: #e74c3c; background: rgba(231,76,60,0.08); }
+  .rc-grade-f { color: #e74c3c; background: rgba(231,76,60,0.15); border: 1px solid rgba(231,76,60,0.3); }
+  .rc-summary {
+    margin-top: 28px; padding: 20px 24px; border-radius: 8px;
+    background: var(--charcoal); border: 1px solid rgba(169,169,169,0.1);
+    font-size: 15px; color: rgba(244,244,244,0.8); font-weight: 300; line-height: 1.7;
+  }
+  .rc-summary strong { color: var(--white-smoke); }
+
+  /* Cycle Sequence — Two Column */
+  .cycle-grid { margin: 32px 0; }
+  .cycle-row {
+    display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 0;
+  }
+  .cycle-situation {
+    background: var(--charcoal); border: 1px solid rgba(169,169,169,0.1);
+    border-radius: 8px; padding: 16px 20px;
+    font-size: 15px; color: rgba(244,244,244,0.8); font-weight: 300; line-height: 1.6;
+  }
+  .cycle-situation strong { color: var(--white-smoke); font-weight: 600; }
+  .cycle-right-arrow {
+    color: var(--saffron); font-size: 22px; padding: 0 14px; opacity: 0.5;
+  }
+  .cycle-response {
+    background: linear-gradient(135deg, var(--charcoal) 0%, rgba(230,180,0,0.06) 100%);
+    border: 1px solid var(--saffron-border); border-radius: 8px; padding: 16px 20px;
+    font-size: 14px; color: var(--saffron); font-weight: 500; line-height: 1.5;
+  }
+  .cycle-down-arrow {
+    display: grid; grid-template-columns: 1fr auto 1fr; gap: 0;
+    padding: 6px 0;
+  }
+  .cycle-down-arrow span {
+    text-align: center; color: rgba(169,169,169,0.25); font-size: 18px;
+  }
+  .cycle-loop {
+    text-align: center; color: var(--saffron); opacity: 0.5;
+    font-size: 13px; font-style: italic; padding-top: 10px;
+  }
+  @media (max-width: 700px) {
+    .cycle-row { grid-template-columns: 1fr; gap: 6px; }
+    .cycle-right-arrow { text-align: center; transform: rotate(90deg); padding: 4px 0; }
+    .cycle-down-arrow { grid-template-columns: 1fr; }
+  }
+
+  /* Footer */
+  .report-footer {
+    text-align: center; padding: 40px 32px;
+    color: rgba(169,169,169,0.3); font-size: 12px;
+    letter-spacing: 0.05em; border-top: 1px solid rgba(169,169,169,0.08);
+  }
+
+  /* Responsive */
+  @media (max-width: 700px) {
+    .section-band { padding: 48px 0; }
+    .cover-band { padding: 64px 0 56px; }
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .phases { grid-template-columns: 1fr; }
+    .compare-grid { grid-template-columns: 1fr; }
+    .pricing-box ul { columns: 1; }
+    table { font-size: 14px; }
+    thead th, tbody td { padding: 9px 12px; }
+  }
+</style>
+</head>
+<body>
+<div class="report-wrapper">
+
+  <!-- COVER -->
+  <div class="cover-band">
+    <div class="cover-inner">
+      <div class="cover-label">DISCIPLINE CLUB &mdash; STRATEGIC GROWTH PLAN</div>
+      <h1>THE PATH TO <span>$350K</span></h1>
+      <p class="subtitle">A data-driven roadmap for turning inconsistent revenue into a predictable, scalable coaching business.</p>
+      <p class="date">March 31, 2026 &mdash; Confidential</p>
+    </div>
+  </div>
+
+  <!-- SECTION 1: WHY WE'RE PAUSING -->
+  <div class="section-band">
+    <div class="section-inner">
+      <span class="section-tag">01</span>
+      <h2>The App Idea Is Too Early, But Not Dead.</h2>
+      <p>The Discipline Club membership app has real potential. But building it before the core coaching business is stable just transfers today's problems to a new product. The app's value comes from coaching systems, accountability workflows, and client data that get refined through high-ticket 1-on-1 work. That refinement hasn't happened yet.</p>
+
+      <div class="callout">
+        <span class="callout-label">THE GATE</span>
+        <p>The app conversation becomes real when the coaching business hits <strong class="fig-profit">$20K+/month in profit</strong> consistently (approximately <strong class="fig-revenue">$30K/month in revenue</strong> before expenses). That proves the product works, funds the build, and generates the IP the app needs to function.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 2: REPORT CARD -->
+  <div class="section-band">
+    <div class="section-inner">
+      <span class="section-tag">02</span>
+      <h2>Report Card</h2>
+      <p>Before we talk about what to change, here's an honest assessment of where each stage of the business stands today:</p>
+
+      <div class="report-card">
+        <div class="rc-row">
+          <div class="rc-label">Ad Performance</div>
+          <div class="rc-grade rc-grade-b">B+</div>
+        </div>
+        <div class="rc-row">
+          <div class="rc-label">Landing Page</div>
+          <div class="rc-grade rc-grade-d">D</div>
+        </div>
+        <div class="rc-row">
+          <div class="rc-label">Lead Qualification &amp; Show Rate</div>
+          <div class="rc-grade rc-grade-c">C-</div>
+        </div>
+        <div class="rc-row">
+          <div class="rc-label">Sales &amp; Closing</div>
+          <div class="rc-grade rc-grade-a">A+</div>
+        </div>
+        <div class="rc-row">
+          <div class="rc-label">Client Onboarding</div>
+          <div class="rc-grade rc-grade-c">C+</div>
+        </div>
+        <div class="rc-row">
+          <div class="rc-label">Coaching &amp; Delivery</div>
+          <div class="rc-grade rc-grade-a">A+</div>
+        </div>
+        <div class="rc-row">
+          <div class="rc-label">Platform &amp; Community</div>
+          <div class="rc-grade rc-grade-b">B-</div>
+        </div>
+        <div class="rc-row">
+          <div class="rc-label">Retention &amp; Renewals</div>
+          <div class="rc-grade rc-grade-f">F</div>
+        </div>
+      </div>
+
+      <div class="rc-summary">
+        Two A+ grades &mdash; Sales and Coaching &mdash; buried between a failing landing page and zero retention system. <strong>The product is excellent. The infrastructure around it is what's broken.</strong> Every recommendation in this plan targets the D's, C's, and the F &mdash; not the things you're already great at.
+      </div>
+    </div>
+  </div>
+
+  <!-- SECTION 3: DIAGNOSIS -->
+  <div class="section-band">
+    <div class="section-inner">
+      <span class="section-tag">03</span>
+      <h2>The Real Problem</h2>
+      <p>The ads work. CTR consistently above 3.6%, best audiences hitting 5%+ at under $2 CPC. <strong>Advertising is not the ceiling on this business.</strong> The ceiling is a pattern:</p>
+
+      <!-- The Cycle — Two Column -->
+      <div class="cycle-grid">
+        <div class="cycle-row">
+          <div class="cycle-situation">Funnel isn't profitable.</div>
+          <div class="cycle-right-arrow">&rarr;</div>
+          <div class="cycle-response">Record new ads, rewrite landing page copy, change the angle.</div>
+        </div>
+        <div class="cycle-down-arrow"><span>&darr;</span><span></span><span></span></div>
+        <div class="cycle-row">
+          <div class="cycle-situation">Funnel is profitable &mdash; but feels like it should produce more.</div>
+          <div class="cycle-right-arrow">&rarr;</div>
+          <div class="cycle-response">Record new ads, rewrite landing page copy, change the angle.</div>
+        </div>
+        <div class="cycle-down-arrow"><span>&darr;</span><span></span><span></span></div>
+        <div class="cycle-row">
+          <div class="cycle-situation">CTR is high, leads are coming in, but lead quality is poor.</div>
+          <div class="cycle-right-arrow">&rarr;</div>
+          <div class="cycle-response">Record new ads, rewrite landing page copy, change the angle.</div>
+        </div>
+        <div class="cycle-down-arrow"><span>&darr;</span><span></span><span></span></div>
+        <div class="cycle-row">
+          <div class="cycle-situation">Leads look better, but they're not showing to booked calls.</div>
+          <div class="cycle-right-arrow">&rarr;</div>
+          <div class="cycle-response">Record new ads, rewrite landing page copy, change the angle.</div>
+        </div>
+        <div class="cycle-loop">&uarr; back to top &mdash; different problem every time, same response, nothing diagnosed</div>
+      </div>
+      <p>The situation changes every cycle. The response never does. It's never "scale what's working while testing one variable." It's never "increase production quality" or "make the brand feel more premium." The same action applied to every problem means nothing is ever actually identified or fixed.</p>
+
+      <div class="callout">
+        <span class="callout-label">THE FIX</span>
+        <p>This cycle makes growth impossible because every change erases what you learned. The fix isn't a better ad or a new angle &mdash; it's learning to <strong>hold what's working and isolate what isn't.</strong></p>
+      </div>
+
+      <h3>Bad Days Are Built Into the Math</h3>
+      <p>At a 60% show rate and 43% close rate, each booked call has a <strong>25.8% chance</strong> of closing. That means each call has a 74.2% chance of producing nothing. With 5 calls/day over 200 working days:</p>
+
+      <div class="kpi-grid kpi-grid-3">
+        <div class="kpi-card">
+          <div class="kpi-value">~45</div>
+          <div class="kpi-label">Fully Negative Days out of 200</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-value">1 in 4.4</div>
+          <div class="kpi-label">Days Where Every Call Fails</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-value">258</div>
+          <div class="kpi-label">Expected Closes per 1,000 Calls</div>
+        </div>
+      </div>
+
+      <p>Roughly once a week, every single call will be a no-show or a no-close. That's not the system failing &mdash; that's statistics. The question is whether you let the variance play out or whether you panic and reset the clock.</p>
+      <p>Over 1,000 booked calls, the expected closes cluster tightly around 258:</p>
+
+      <div id="bellChart" style="width:100%;height:340px;margin:28px 0;"></div>
+      <p style="text-align:center;color:rgba(169,169,169,0.35);font-size:13px;font-style:italic;margin-top:-12px;">The system is predictable. The variance is narrow. Let it run.</p>
+
+    </div>
+  </div>
+
+  <!-- SECTION 4: STEP FUNCTION VS THE RAMP -->
+  <div class="section-band">
+    <div class="section-inner">
+      <span class="section-tag">04</span>
+      <h2>Step Function vs. The Ramp</h2>
+      <p>The instinct is to find one change that jumps revenue from where it is to where you want it &mdash; without more time, more capital, or more patience. That's a step function, and it almost never works:</p>
+
+      <!-- Step Function Chart (ECharts) -->
+      <div id="stepChart" style="width:100%;height:360px;margin:28px 0;"></div>
+      <p style="text-align:center;color:rgba(169,169,169,0.35);font-size:13px;font-style:italic;margin-top:-12px;">Step functions require a miracle. Ramps require discipline.</p>
+
+      <p>What actually works is the ramp &mdash; ad spend increases linearly, but revenue grows parabolically as retention compounds, organic kicks in, and the brand builds:</p>
+
+      <!-- Ramp Chart (ECharts) -->
+      <div id="rampChart" style="width:100%;height:380px;margin:28px 0;"></div>
+      <p style="text-align:center;color:rgba(169,169,169,0.35);font-size:13px;font-style:italic;margin-top:-12px;">Retention compounds. Organic kicks in. The ramp accelerates.</p>
+
+      <p>The real leverage is in <strong>product clarity</strong> (say what the product is, not marketing angles), <strong>client retention</strong> (50% more revenue per client at $0 cost), and <strong>organic acquisition</strong> (income that doesn't shut off when ad spend does).</p>
+    </div>
+  </div>
+
+  <!-- SECTION 5: WHERE THE MONEY ACTUALLY GOES -->
+  <div class="section-band">
+    <div class="section-inner">
+      <span class="section-tag">05</span>
+      <h2>Where the Money Goes</h2>
+      <p>The instinct is to throw more money at ads. But ads run through your landing page, and your landing page converts at <strong>3&ndash;4.5%</strong>. More traffic through a page that loses 96 out of 100 visitors just means more wasted ad spend.</p>
+
+      <div class="compare-grid">
+        <div class="compare-card compare-bad">
+          <div class="compare-label">THE CURRENT APPROACH</div>
+          <h4>$5,000/mo &rarr; All Ads</h4>
+          <p>$5,000 in ad spend through a landing page converting at 3&ndash;4.5%. Most of that traffic bounces before applying. You're paying to send people to a page that isn't built to convert them. When results dip, rebuild the entire funnel from scratch &mdash; losing weeks of momentum and data.</p>
+          <div class="compare-result">High cost per client. Resets every few weeks. No compounding.</div>
+        </div>
+        <div class="compare-card compare-good">
+          <div class="compare-label">THE BETTER INVESTMENT</div>
+          <h4>$2,500 Services + $2,500 Ads</h4>
+          <p>Professional landing pages, split testing, brand positioning, and ad optimization. Same budget, but the page converts at 10&ndash;15% instead of 3&ndash;4.5%. That's <strong>3x more applications from the same ad spend.</strong> Every future ad dollar works 3x harder &mdash; permanently.</p>
+          <div class="compare-result">Same spend, 3x the output. Compounds every month.</div>
+        </div>
+      </div>
+
+      <p>Going from 4% to 12% conversion isn't a marginal improvement &mdash; it's the difference between $546 CAC and under $200 CAC. The $2,500/mo in services is a <strong>permanent multiplier</strong> on every ad dollar you ever spend. Raw ad spend is consumed the moment it's spent.</p>
+
+      <h3>The Tinkering Trap</h3>
+      <div class="compare-grid">
+        <div class="compare-card compare-bad">
+          <div class="compare-label">TIME SPENT TINKERING</div>
+          <h4>Funnel Rebuilds</h4>
+          <p>Redesigning landing pages, rewriting copy, rebuilding ad sets, changing the offer &mdash; all at once, with no data on what was actually broken. Produces $0 in revenue and erases the learning from the previous version.</p>
+          <div class="compare-result">$0 revenue. $0 learning. Clock resets to zero.</div>
+        </div>
+        <div class="compare-card compare-good">
+          <div class="compare-label">TIME SPENT BUILDING</div>
+          <h4>Content &amp; Personal Brand</h4>
+          <p>Creating content, showing up on podcasts, posting transformations. Produces $0 in immediate revenue &mdash; but builds organic acquisition that compounds and develops a skill that serves every product you ever launch.</p>
+          <div class="compare-result">$0 today. $5K&ndash;$15K/mo within 12&ndash;18 months. Permanent asset.</div>
+        </div>
+      </div>
+
+      <p>Both activities produce $0 revenue today. But one erases progress and the other compounds. If you're going to spend time on something that doesn't make money right now, make it the thing that builds a permanent asset.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 6: THE NUMBERS -->
+  <div class="section-band">
+    <div class="section-inner">
+      <span class="section-tag">06</span>
+      <h2>The Numbers</h2>
+      <p>Based on your pricing ($649/mo or $3,200/6mo), proven DC90 campaign data, and realistic retention projections. Revenue and profit are labeled separately throughout &mdash; these are different numbers.</p>
+
+      <h3>Client Lifecycle &amp; Retention</h3>
+      <table class="t3">
+        <thead>
+          <tr><th>Stage</th><th>% of Clients</th><th>Duration</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Pay in full ($3,200)</td><td>50%</td><td>Full 6 months</td></tr>
+          <tr><td>Monthly ($649/mo), complete</td><td>42.5%</td><td>Full 6 months</td></tr>
+          <tr><td>Monthly, early cancellation</td><td>7.5%</td><td>~2 months avg</td></tr>
+        </tbody>
+      </table>
+      <table class="t3">
+        <thead>
+          <tr><th>After 6 Months</th><th>% of Completers</th><th>Additional Time</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Re-sign for 6 more months</td><td>20%</td><td>+6 months (12 total)</td></tr>
+          <tr><td>Continue month-to-month</td><td>30%</td><td>+3 months avg (9 total)</td></tr>
+          <tr><td>End subscription</td><td>50%</td><td>Done at 6 months</td></tr>
+        </tbody>
+      </table>
+      <p><strong>Average client lifespan: ~7.6 months.</strong> Average lifetime revenue per client: <strong class="fig-revenue">~$4,500</strong>. At a $546 CAC, that's an <strong>8.3x return</strong> on every acquisition dollar.</p>
+
+      <h3>Proven Funnel Metrics (DC90 Campaign)</h3>
+      <table class="t3">
+        <thead>
+          <tr><th>Metric</th><th>Proven</th><th>Optimized Target</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Cost per Application</td><td>$42&ndash;$52</td><td>$35&ndash;$45</td></tr>
+          <tr><td>Customer Acquisition Cost</td><td>$546</td><td>$400&ndash;$450</td></tr>
+          <tr><td>Show Rate</td><td>60%</td><td>75%+</td></tr>
+          <tr><td>Close Rate (completed calls)</td><td>43%</td><td>35&ndash;40%</td></tr>
+          <tr><td>LTV : CAC</td><td>8.3x</td><td>10x+</td></tr>
+        </tbody>
+      </table>
+      <p>Close rate is already strong at 43%. The biggest leak: <strong>60% show rate</strong> &mdash; 40% of booked calls never happen. Fixing this alone drops effective CAC by ~20%.</p>
+
+      <h3>The Path to 50 Clients</h3>
+      <p>Starting from zero recurring revenue in April, acquiring <strong>9 new clients per month</strong> consistently:</p>
+      <table>
+        <thead>
+          <tr><th>Month</th><th>New Clients</th><th>Active Clients</th><th>Monthly Revenue</th><th>Monthly Profit</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Apr</td><td>9</td><td>9</td><td class="fig-revenue">$5,300</td><td class="fig-profit">$1,200</td></tr>
+          <tr><td>May</td><td>9</td><td>18</td><td class="fig-revenue">$10,600</td><td class="fig-profit">$4,500</td></tr>
+          <tr><td>Jun</td><td>9</td><td>27</td><td class="fig-revenue">$16,000</td><td class="fig-profit">$9,900</td></tr>
+          <tr><td>Jul</td><td>9</td><td>36</td><td class="fig-revenue">$21,300</td><td class="fig-profit">$15,200</td></tr>
+          <tr><td>Aug</td><td>9</td><td>44</td><td class="fig-revenue">$26,000</td><td class="fig-profit">$19,900</td></tr>
+          <tr><td>Sep</td><td>9</td><td>52</td><td class="fig-revenue">$30,700</td><td class="fig-profit">$24,600</td></tr>
+          <tr><td>Oct</td><td>9</td><td>58</td><td class="fig-revenue">$34,300</td><td class="fig-profit">$28,200</td></tr>
+          <tr><td>Nov</td><td>9</td><td>62</td><td class="fig-revenue">$36,600</td><td class="fig-profit">$30,500</td></tr>
+          <tr class="table-highlight"><td>Dec</td><td>9</td><td>67</td><td class="fig-revenue">$39,600</td><td class="fig-profit">$29,500</td></tr>
+        </tbody>
+      </table>
+      <p>9 clients/month requires ~35 booked calls at your 60% show rate and 43% close rate. Monthly ad spend: <strong>~$4,900</strong>. That's extremely doable.</p>
+
+      <h3>The Target</h3>
+      <div class="kpi-grid">
+        <div class="kpi-card">
+          <div class="kpi-value">9/mo</div>
+          <div class="kpi-label">New Clients Needed</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-value">67</div>
+          <div class="kpi-label">Active Clients by Dec</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-value">$150K</div>
+          <div class="kpi-label">Year 1 Profit</div>
+        </div>
+        <div class="kpi-card">
+          <div class="kpi-value">$354K</div>
+          <div class="kpi-label">Run Rate Exiting Dec (annualized profit)</div>
+        </div>
+      </div>
+      <p>Estimating roughly <strong class="fig-profit">~$15K in profit</strong> through Q1, you need <strong class="fig-profit">~$135K in profit</strong> from Apr&ndash;Dec to close the year at <strong class="fig-profit">$150K</strong>. More importantly, you exit December at a run rate of <strong class="fig-profit">$354K/year in profit</strong> &mdash; well past the $250K mark going into 2027.</p>
+
+      <h3>Seasonality</h3>
+      <table>
+        <thead>
+          <tr><th>Period</th><th>Demand</th><th>Strategy</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Jan &mdash; Mar</td><td>Peak</td><td>Maximize ad spend and acquisition</td></tr>
+          <tr><td>Apr &mdash; Jun</td><td>Steady</td><td>Maintain spend, build content</td></tr>
+          <tr><td>Jul &mdash; Aug</td><td>Natural dip</td><td>Reduce spend, focus on retention</td></tr>
+          <tr><td>Sep &mdash; Oct</td><td>Second peak</td><td>Push "fall reset" acquisition</td></tr>
+          <tr><td>Nov &mdash; Dec</td><td>Low</td><td>Pre-sell January waitlist</td></tr>
+        </tbody>
+      </table>
+      <p>July and December dips are <strong>normal</strong>. They do not mean the system is broken.</p>
+    </div>
+  </div>
+
+  <!-- SECTION 7: THE PLAN -->
+  <div class="section-band">
+    <div class="section-inner">
+      <span class="section-tag">07</span>
+      <h2>The Plan: April &ndash; December 2026</h2>
+      <p>9 months to build from where you are to 67 active clients and <strong class="fig-profit">$29K+/month in profit</strong>.</p>
+
+      <h3>Immediate Actions ($0 Cost)</h3>
+
+      <div class="action-item">
+        <h4><span class="action-num">01</span> Lock Pricing</h4>
+        <p>$649/month or $3,200 paid in full. Always lead with the monthly number. Stop changing the price.</p>
+      </div>
+
+      <div class="action-item">
+        <h4><span class="action-num">02</span> Build a Retention System</h4>
+        <p>Automate a 3-weeks-out alert before each client's commitment ends. Evaluate their progress, schedule a debrief call, pitch renewal:</p>
+        <div class="script-box">
+          <p>"Hey man &mdash; I've raised prices to make sure we don't exceed capacity and I can keep delivering my guys the same value. New clients are at $949/month. But men who've been with me get the grandfathered rate of $649/month, as long as their subscription stays unbroken. Or $3,000 for 6 months &mdash; that's over a month and a half free, and half what new clients pay."</p>
+        </div>
+      </div>
+
+      <div class="action-item">
+        <h4><span class="action-num">03</span> Fix the Show Rate</h4>
+        <p>40% of booked calls never happen. Replace text-heavy pre-call PDFs with a 30-second confirmation video ("excited to talk, here's what we'll cover") and an SMS reminder sequence. Less reading, more momentum. This alone could drop CAC by 20%.</p>
+      </div>
+
+      <div class="action-item">
+        <h4><span class="action-num">04</span> Build Your Personal Brand</h4>
+        <p>Instagram, YouTube, LinkedIn, podcast guesting. Every follower is free acquisition later and launch fuel for the app. You're a great speaker &mdash; use that skill for content, not just ads.</p>
+      </div>
+
+      <div class="action-item">
+        <h4><span class="action-num">05</span> Get a Content Coach &amp; Learn AI Tools</h4>
+        <p>A content coach helps you build a creation process that compounds. AI tools can handle check-in tracking, follow-ups, progress reports &mdash; pushing your client capacity from ~40 to 60&ndash;70.</p>
+      </div>
+
+      <div class="action-item">
+        <h4><span class="action-num">06</span> Slow Down Decisions</h4>
+        <p>New idea? Write it down. Wait 7 days. Ask: does this compound what I'm building, or reset the clock? Fast execution, slow decisions.</p>
+      </div>
+
+      <h3>Audience Targeting</h3>
+      <p>Target metros with high concentrations of Black professionals instead of explicit demographic targeting:</p>
+      <table>
+        <thead>
+          <tr><th>Market</th><th>Why</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Atlanta / Augusta / Macon</td><td>Highest concentration of Black professionals in the US</td></tr>
+          <tr><td>DC / Baltimore / Virginia</td><td>Government, law, finance &mdash; high income base</td></tr>
+          <tr><td>Raleigh / Durham / Charlotte</td><td>Growing tech/finance, strong Black business community</td></tr>
+          <tr><td>Chicago / NW Indiana</td><td>Deep professional networks, corporate presence</td></tr>
+          <tr><td>NYC / New Jersey</td><td>Finance, media, law &mdash; high income, high need</td></tr>
+        </tbody>
+      </table>
+      <p>This niche is genuine whitespace. Almost nobody is doing high-ticket transformation coaching for 35&ndash;55 year old Black male professionals.</p>
+
+      <h3>How Personal Brand Reduces CAC</h3>
+      <table>
+        <thead>
+          <tr><th>Stage</th><th>Timeline</th><th>Blended CAC</th><th>Revenue Mix</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Cold Start</td><td>Months 1&ndash;6</td><td>$500&ndash;$600</td><td>80% paid / 20% organic</td></tr>
+          <tr><td>Building</td><td>Months 6&ndash;12</td><td>$350&ndash;$500</td><td>60% paid / 40% organic</td></tr>
+          <tr><td>Established</td><td>Year 2</td><td>$200&ndash;$350</td><td>40% paid / 60% organic</td></tr>
+          <tr class="table-highlight"><td>Authority</td><td>Year 3+</td><td>Under $200</td><td>20% paid / 80% organic</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SECTION 8: NEXT STEPS -->
+  <div class="section-band">
+    <div class="section-inner">
+      <span class="section-tag">08</span>
+      <h2>Next Steps</h2>
+      <p>When you're ready to invest in professional marketing execution:</p>
+
+      <div class="pricing-box">
+        <h4>Marketing Management &mdash; $2,500/mo + 15% of Ad Spend</h4>
+        <ul>
+          <li>Meta Ads management &amp; optimization</li>
+          <li>Google Ads management</li>
+          <li>Landing page design &amp; split testing</li>
+          <li>Organic SEO strategy</li>
+          <li>Website &amp; rebrand (included at onboarding)</li>
+          <li>Multiple offer creation &amp; testing</li>
+          <li>Monthly reporting &amp; data analysis</li>
+          <li>Creative briefs for ads &amp; VSLs</li>
+        </ul>
+      </div>
+
+      <p>At ~$4,900/mo ad spend: total marketing cost is <strong>$3,235/mo</strong>. My pay is tied directly to your growth. If I'm not delivering results, you're not scaling ads, and my cut stays low.</p>
+      <p>You stop being the marketing department. I handle landing pages, split tests, ad optimization, audience strategy, and data. You handle coaching and content. Nothing changes without data behind it, one variable at a time, measured, iterated.</p>
+      <p>For reference: the only time your business hit peak performance and had to turn off ads because the schedule was full, professional marketing strategy was running the system. That wasn't luck, it was the difference between coordinated execution and gut-feel rebuilds.</p>
+
+      <div class="callout">
+        <span class="callout-label">THE BOTTOM LINE</span>
+        <p>You don't need a new product, a new angle, or a new business model. You need 9 new clients a month at your current price with a system that doesn't reset every time something feels off. The math works. The market is wide open.<br><br>
+        <strong class="fig-profit">$150K in profit</strong> by end of 2026.<br>
+        <strong class="fig-profit">$354K/yr profit run rate</strong> exiting December.<br><br>
+        9 clients a month. That's it.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="report-footer">
+    Discipline Club &mdash; Strategic Growth Plan &mdash; March 2026 &mdash; Confidential
+  </div>
+
+</div>
+
+<script>
+// Shared axis config for both charts
+var sharedAxis = {
+  months: ['Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  yMax: 60000,
+  yInterval: 10000,
+  xAxisConf: function() {
+    return {
+      type: 'category',
+      data: this.months,
+      axisLine: { lineStyle: { color: 'rgba(169,169,169,0.15)' } },
+      axisTick: { show: false },
+      axisLabel: { color: 'rgba(169,169,169,0.5)', fontFamily: 'DM Sans', fontSize: 12 }
+    };
+  },
+  yAxisConf: function() {
+    return {
+      type: 'value', min: 0, max: this.yMax, interval: this.yInterval,
+      axisLine: { show: false }, axisTick: { show: false },
+      splitLine: { lineStyle: { color: 'rgba(169,169,169,0.08)' } },
+      axisLabel: {
+        color: 'rgba(169,169,169,0.4)', fontFamily: 'DM Sans', fontSize: 11,
+        formatter: function(v) { return v === 0 ? '$0' : '$' + (v/1000) + 'K'; }
+      }
+    };
+  }
+};
+
+// ── Step Function Chart ──
+(function() {
+  var chart = echarts.init(document.getElementById('stepChart'), null, { renderer: 'canvas' });
+  // Erratic revenue ~$6K-$18K, avg ~$10K
+  var revenue = [12000, 8000, 15000, 7000, 13000, 9000, 6000, 14000, 10000];
+  // Erratic ad spend ~$1.5K-$5K
+  var adSpend = [2500, 4200, 1800, 3500, 4800, 2000, 3800, 1500, 3200];
+
+  chart.setOption({
+    backgroundColor: 'transparent',
+    grid: { left: 65, right: 100, top: 50, bottom: 45 },
+    xAxis: sharedAxis.xAxisConf(),
+    yAxis: sharedAxis.yAxisConf(),
+    tooltip: { show: false },
+    legend: { show: false },
+    series: [
+      {
+        name: 'Revenue',
+        type: 'line',
+        data: revenue,
+        symbol: 'none',
+        lineStyle: { color: 'rgba(244,244,244,0.5)', width: 2 },
+        endLabel: {
+          show: true, formatter: 'Current:\n~$10K avg', color: 'rgba(244,244,244,0.5)',
+          fontFamily: 'DM Sans', fontWeight: 500, fontSize: 11, distance: 8
+        },
+        z: 2
+      },
+      {
+        name: 'Ad Spend',
+        type: 'line',
+        data: adSpend,
+        symbol: 'none',
+        lineStyle: { color: 'rgba(169,169,169,0.25)', width: 1.5, type: 'dashed' },
+        endLabel: {
+          show: true, formatter: 'Ad Spend', color: 'rgba(169,169,169,0.35)',
+          fontFamily: 'DM Sans', fontWeight: 400, fontSize: 11, distance: 8
+        },
+        z: 1
+      }
+    ],
+    graphic: (function() {
+      // Container: 360px tall. Grid: top:50, bottom:45 → plotH = 265px
+      // $40K → 40/60 = 0.667 from bottom → top = 50 + (1-0.667)*265 = 138px → 38.3%
+      // Sep = index 5 of 8 gaps → 62% from left
+      var jumpX = '62%';
+      var y40k = '38.3%';
+      var y10k = 133;
+      return [
+        // Vertical dashed line from ~$10K up to $40K
+        {
+          type: 'line',
+          left: jumpX, top: y40k,
+          shape: { x1: 0, y1: 0, x2: 0, y2: y10k },
+          style: { stroke: '#E6B400', lineWidth: 2, lineDash: [6, 4], opacity: 0.6 },
+          z: 10
+        },
+        // Horizontal dashed line from Sep to Dec at $40K
+        {
+          type: 'line',
+          left: jumpX, top: y40k,
+          shape: { x1: 0, y1: 0, x2: 200, y2: 0 },
+          style: { stroke: '#E6B400', lineWidth: 2.5, lineDash: [8, 5], opacity: 0.6 },
+          z: 10
+        },
+        // "Desired: $40K" label — to the right of the horizontal line
+        {
+          type: 'text',
+          left: '72%', top: '30%',
+          style: {
+            text: 'Desired: $40K',
+            fill: '#E6B400',
+            font: '600 13px DM Sans'
+          },
+          z: 10
+        },
+        // Annotation next to the vertical jump
+        {
+          type: 'text',
+          left: '64%', top: '50%',
+          style: {
+            text: 'No extra capital.\nNo extra time.',
+            fill: 'rgba(230,180,0,0.45)',
+            font: 'italic 12px DM Sans',
+            lineHeight: 18
+          }
+        }
+      ];
+    })()
+  });
+  window.addEventListener('resize', function() { chart.resize(); });
+})();
+
+// ── Ramp Chart ──
+(function() {
+  var chart = echarts.init(document.getElementById('rampChart'), null, { renderer: 'canvas' });
+  // Ad spend: gentle linear ramp $2K → $8K
+  var adSpend = [2000, 2500, 3000, 3500, 4200, 5000, 5800, 7000, 8000];
+  // Revenue: S-curve — slow start, accelerates mid-range, then rolls off as efficiency gains plateau
+  var revenue = [8000, 9000, 11000, 15000, 21000, 28000, 34000, 38000, 40000];
+
+  chart.setOption({
+    backgroundColor: 'transparent',
+    grid: { left: 65, right: 100, top: 50, bottom: 45 },
+    xAxis: sharedAxis.xAxisConf(),
+    yAxis: sharedAxis.yAxisConf(),
+    legend: { show: false },
+    tooltip: {
+      trigger: 'axis',
+      backgroundColor: '#1A1A1A',
+      borderColor: 'rgba(230,180,0,0.25)',
+      textStyle: { color: '#F4F4F4', fontFamily: 'DM Sans', fontSize: 13 },
+      formatter: function(params) {
+        var html = '<strong>' + params[0].axisValue + ' 2026</strong><br/>';
+        params.forEach(function(p) {
+          if (p.value != null) {
+            html += '<span style="color:' + p.color + '">\u25CF</span> ' + p.seriesName + ': <strong>$' + (p.value/1000).toFixed(1) + 'K</strong><br/>';
+          }
+        });
+        var rev = params[0] ? params[0].value : 0;
+        var spend = params[1] ? params[1].value : 0;
+        var profit = rev - spend - 2000;
+        if (profit > 0) {
+          html += '<span style="color:#E6B400">\u25CF</span> Est. Profit: <strong style="color:#E6B400">$' + (profit/1000).toFixed(1) + 'K</strong>';
+        }
+        return html;
+      }
+    },
+    series: [
+      {
+        name: 'Revenue',
+        type: 'line',
+        data: revenue,
+        smooth: 0.4,
+        symbol: 'none',
+        lineStyle: { color: '#E6B400', width: 2.5 },
+        areaStyle: {
+          color: {
+            type: 'linear', x: 0, y: 0, x2: 0, y2: 1,
+            colorStops: [
+              { offset: 0, color: 'rgba(230,180,0,0.18)' },
+              { offset: 1, color: 'rgba(230,180,0,0)' }
+            ]
+          }
+        },
+        endLabel: {
+          show: true, formatter: 'Revenue', color: '#E6B400',
+          fontFamily: 'DM Sans', fontWeight: 600, fontSize: 13, distance: 8
+        },
+        z: 2
+      },
+      {
+        name: 'Ad Spend',
+        type: 'line',
+        data: adSpend,
+        smooth: false,
+        symbol: 'none',
+        lineStyle: { color: 'rgba(169,169,169,0.4)', width: 1.5 },
+        endLabel: {
+          show: true, formatter: 'Ad Spend', color: 'rgba(169,169,169,0.5)',
+          fontFamily: 'DM Sans', fontWeight: 400, fontSize: 11, distance: 8
+        },
+        z: 1
+      }
+    ]
+  });
+  window.addEventListener('resize', function() { chart.resize(); });
+})();
+
+// ── Bell Curve Chart ──
+(function() {
+  var chart = echarts.init(document.getElementById('bellChart'), null, { renderer: 'canvas' });
+  var mean = 258;
+  var sd = 13.8;
+
+  // Generate bell curve data points
+  var data = [];
+  var areaData1sd = [];
+  var areaData2sd = [];
+  for (var x = 200; x <= 316; x += 0.5) {
+    var z = (x - mean) / sd;
+    var y = Math.exp(-0.5 * z * z) / (sd * Math.sqrt(2 * Math.PI));
+    data.push([x, y]);
+    if (x >= mean - 2*sd && x <= mean + 2*sd) {
+      areaData2sd.push([x, y]);
+    } else {
+      areaData2sd.push([x, 0]);
+    }
+    if (x >= mean - sd && x <= mean + sd) {
+      areaData1sd.push([x, y]);
+    } else {
+      areaData1sd.push([x, 0]);
+    }
+  }
+
+  chart.setOption({
+    backgroundColor: 'transparent',
+    grid: { left: 50, right: 40, top: 60, bottom: 55 },
+    xAxis: {
+      type: 'value', min: 210, max: 310,
+      axisLine: { lineStyle: { color: 'rgba(169,169,169,0.15)' } },
+      axisTick: { show: false },
+      splitLine: { show: false },
+      axisLabel: { show: false },
+      name: '', nameLocation: 'middle'
+    },
+    yAxis: {
+      type: 'value', show: false, splitLine: { show: false }
+    },
+    tooltip: { show: false },
+    series: [
+      // 2σ fill
+      {
+        type: 'line', data: areaData2sd, symbol: 'none', lineStyle: { width: 0 },
+        areaStyle: { color: 'rgba(230,180,0,0.06)' }, z: 1, silent: true
+      },
+      // 1σ fill
+      {
+        type: 'line', data: areaData1sd, symbol: 'none', lineStyle: { width: 0 },
+        areaStyle: { color: 'rgba(230,180,0,0.12)' }, z: 2, silent: true
+      },
+      // Main curve with markLines for accurate data-coordinate positioning
+      {
+        type: 'line', data: data, symbol: 'none', smooth: true,
+        lineStyle: { color: '#E6B400', width: 2 }, z: 3, silent: true,
+        markLine: {
+          silent: true, symbol: 'none',
+          label: {
+            fontFamily: 'DM Sans', fontSize: 11, position: 'start', distance: 6
+          },
+          lineStyle: { type: 'dashed' },
+          data: [
+            // Mean
+            { xAxis: mean, lineStyle: { color: '#E6B400', width: 1.5, opacity: 0.6 },
+              label: { formatter: '258 closes', color: '#E6B400', fontWeight: 600, fontSize: 14, position: 'end', distance: 8 } },
+            // 1σ boundaries
+            { xAxis: mean - sd, lineStyle: { color: 'rgba(230,180,0,0.3)', width: 1 },
+              label: { formatter: '244', color: 'rgba(230,180,0,0.6)', fontWeight: 500 } },
+            { xAxis: mean + sd, lineStyle: { color: 'rgba(230,180,0,0.3)', width: 1 },
+              label: { formatter: '272', color: 'rgba(230,180,0,0.6)', fontWeight: 500 } },
+            // 2σ boundaries
+            { xAxis: mean - 2*sd, lineStyle: { color: 'rgba(169,169,169,0.15)', width: 1 },
+              label: { formatter: '230', color: 'rgba(169,169,169,0.35)', fontWeight: 400 } },
+            { xAxis: mean + 2*sd, lineStyle: { color: 'rgba(169,169,169,0.15)', width: 1 },
+              label: { formatter: '286', color: 'rgba(169,169,169,0.35)', fontWeight: 400 } }
+          ]
+        }
+      }
+    ],
+    graphic: [
+      // Chart title above
+      {
+        type: 'text',
+        left: 'center', top: 6,
+        style: { text: 'Expected Closes out of 1,000 Booked Calls', fill: 'rgba(169,169,169,0.5)', font: '400 13px DM Sans', textAlign: 'center' }
+      },
+      // 68% label centered below chart
+      {
+        type: 'text',
+        left: 'center', bottom: 2,
+        style: { text: '68% of outcomes fall in this range', fill: 'rgba(230,180,0,0.35)', font: '400 11px DM Sans', textAlign: 'center' }
+      }
+    ]
+  });
+  window.addEventListener('resize', function() { chart.resize(); });
+})();
+</script>
+</body>
+</html>
